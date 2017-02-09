@@ -21,7 +21,7 @@
 
 ```java	
 While(iterator.hasNext()){
-		Iterator.next(); 
+		iterator.next(); 
 }
 ```
 
