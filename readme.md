@@ -151,12 +151,12 @@ Operator.doMainJob(param2)’
 ```java
 abstract class Factory{
 	public final Product newProduct(Object param){
-Product product = createProduct(param);
-processing();
-return product;
-}
-protected abstract Product createProduct(Object Param);
-protected abstract void processing();
+        Product product = createProduct(param);
+        processing();
+        return product;
+    }
+    protected abstract Product createProduct(Object Param);
+    protected abstract void processing();
 }
 ``` 
 
@@ -168,4 +168,32 @@ protected abstract void processing();
 
 * 만들어질 객체
 
-Template와 호환성이 좋다.
+Template Method와 호환성이 좋다.
+
+##
+
+## Singleton
+
+###클래스의 인스턴스를 단 한 개만 사용하고자 할 때 사용
+
+'단 하나만’ 
+
+외부에서의 인스턴스 생성을 막고 내부적으로 단 하나의 인스턴스만 생성해 사용
+
+####왜?: 여러 개의 인스턴스가 만들어지는 것을 확실하게 방지해서 사용해야 할 때, 예를 들면 시스템 리소스를 사용하는 객체, 이러한 객체가 많을 경우 시스템에 부담을 줄 수있다.
+
+```java
+class Singleton{
+    private Singleton uniqueInstance = new Singleton();
+    private Singleton(){}
+    public Singleton getInstance(){
+        return uniqueInstance;
+    }
+}
+```
+#### Singleton
+* 프라이빗 생성자
+* 유일한 스태틱 인스턴스 
+* 인스턴스 게터(getter);
+
+외부에 단 하나의 인스턴스만을 만들어 사용한다는 것을 알리고, 이러한 사실에 대한 보장을 위해 사용된다.
