@@ -3,14 +3,14 @@
 
 # list:
 
- * [Iterator](http://github.com/kdh7337/GofDesignPattern#Iterator)
- * [Adapter](http://github.com/kdh7337/GofDesignPattern#Adapter)
- * [Proxy](http://github.com/kdh7337/GofDesignPattern#Proxy)
- * [Template Method](http://github.com/kdh7337/GofDesignPattern#Template-Method)
- * [Factory Method](http://github.com/kdh7337/GofDesignPattern#Factory-Method)
- * [Singleton](http://github.com/kdh7337/GofDesignPattern#Singleton)
- * [Strategy](http://github.com/kdh7337/GofDesignPattern#Strategy)
- * [Facade](http://github.com/kdh7337/GofDesignPattern#Facade)
+ * [Iterator](http://github.com/kdh7337/GofDesignPattern#iterator)
+ * [Adapter](http://github.com/kdh7337/GofDesignPattern#adapter)
+ * [Proxy](http://github.com/kdh7337/GofDesignPattern#proxy)
+ * [Template Method](http://github.com/kdh7337/GofDesignPattern#template-Method)
+ * [Factory Method](http://github.com/kdh7337/GofDesignPattern#factory-Method)
+ * [Singleton](http://github.com/kdh7337/GofDesignPattern#singleton)
+ * [Strategy](http://github.com/kdh7337/GofDesignPattern#strategy)
+ * [Facade](http://github.com/kdh7337/GofDesignPattern#facade)
  
 
 ##
