@@ -4,6 +4,6 @@
 public class ProxyPattern {
     interface Operator{
         void minorWork(String s);
-        void majorWork(String s);
+        void majorWork();
     }
 }
