@@ -128,6 +128,7 @@ Operator.doMainJob(param2)’
 
 * 추상 메소드 
 * 구체적인 운용 로직이 들어간 메소드
+
 #### Concrete 클래스: 구현체 
 
 * 추상 메소드가 구현된 클래스
