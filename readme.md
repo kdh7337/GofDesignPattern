@@ -1,12 +1,13 @@
 # Gof Design Patterns
-###  재사용성, 유용성
+###  재사용성, 유용성, 추상 구현 
 
 # list:
 
  * Iterator
  * Adapter
  * Proxy
- * Template 
+ * Template Method 
+ * Factory Method
 
 ##
 
@@ -133,3 +134,38 @@ Operator.doMainJob(param2)’
 
 * 추상 메소드가 구현된 클래스
  
+## 
+
+## Factory Method
+
+### 인스턴스 생성 방식을 정한다. 
+
+‘공장’
+
+인스턴스가 생성되는 방식 절차를 정한다. 
+
+#### 왜?: 미리 정해 높은 생성 방식의 변경 없이 세부 처리 과정만을 자유롭게 변경 할 수 있다. 인스턴스의 생성이 클래스를 특정하는 것으로부터 자유로워질 수 있다.
+
+기본적인 생성자를 통한 인스턴스 생성은 특정 클래스에 한정되어 구현될 수 밖에 없다. 팩토리 메소드는 이로부터 자율성을 만들어 낼 수 있다. 
+
+```java
+abstract class Factory{
+	public final Product newProduct(Object param){
+Product product = createProduct(param);
+processing();
+return product;
+}
+protected abstract Product createProduct(Object Param);
+protected abstract void processing();
+}
+``` 
+
+#### Factory 추상 클래스
+
+* 만들어질 객체의 생성, 기본 처리 과정을 담은 틀
+
+#### Product 인터페이스
+
+* 만들어질 객체
+
+Template와 호환성이 좋다.
