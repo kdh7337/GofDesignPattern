@@ -3,14 +3,14 @@
 
 # list:
 
- * Iterator
- * Adapter
- * Proxy
- * Template Method 
- * Factory Method
- * SingleTon
- * Strategy
- * Facade
+ * [Iterator](http://github.com/kdh7337/GofDesignPattern#Iterator)
+ * [Adapter](http://github.com/kdh7337/GofDesignPattern#Adapter)
+ * [Proxy](http://github.com/kdh7337/GofDesignPattern#Proxy)
+ * [Template Method](http://github.com/kdh7337/GofDesignPattern#Template-Method)
+ * [Factory Method](http://github.com/kdh7337/GofDesignPattern#Factory-Method)
+ * [Singleton](http://github.com/kdh7337/GofDesignPattern#Singleton)
+ * [Strategy](http://github.com/kdh7337/GofDesignPattern#Strategy)
+ * [Facade](http://github.com/kdh7337/GofDesignPattern#Facade)
  
 
 ##
@@ -47,7 +47,7 @@ While(iterator.hasNext()){
 
 ##
 
-## Adapter 패턴
+## Adapter 
 
 ### 서로 다른(차이점) 두 가지 요소를 연결
 
@@ -115,7 +115,7 @@ Operator.doMainJob(param2)’
 
 ##
 
-## Template
+## Template Method
 
 
 ### 사용법을 미리 정하고 구체적인 구현은 후에 정해지는 패턴
