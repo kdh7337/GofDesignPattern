@@ -256,3 +256,43 @@ public class Façade{
 인터페이스(메소드) 수를 줄이는데 핵심이 있다. 
 
 Façade들로 새 Façade를 구현하는 것도 좋은 방법이 될 수 있다.
+
+##
+
+## Observer
+### 상태 변화를 알려라, 감지하라 
+‘관찰자’
+관찰 대상의 상태 변화를 관찰자에게 전달하고 이에따라 관찰자가 적합한 액션을 취한다.
+관찰보다는 전달
+#### 왜?: 관찰 대상을 자유롭게 변화시킬 수 있다. 관찰 대상의 변화에 즉각적인 대응이 가능하도록 할 수 있다.
+  
+  ```java
+  abstract class Observable {
+    private Observer[] observers = new Observer[number];
+    public void attachObserver(Observer observer){
+        observers.add(observer);
+    }
+    public void doSomething(){
+        //동작
+        //완료
+  		noticeToObsersers();
+    }
+      protected void noticeToObservers(){
+          for(Observer observer : observers){
+            observer.notice(this);
+            }
+        }
+  }
+  ```
+
+어떠한 변화가 생겨나면 관찰자에게 관찰 대상의 참조를 전달한다. 
+
+이를 통해 더욱 유연한 대처가 가능하다. 
+
+#### 관찰자 추상 클래스 또는 인터페이스
+* 관찰 대상의 변화에 대응하는 메소드
+#### 관찰 대상 추상 클래스 또는 인터페이스
+* 관찰자에게 변화를 전달하는 메소드
+
+관찰 대상 자체를 ‘this’로 넘겨 관찰 대상에 어떠한 영향력을 행사할 수도 있다.
+
