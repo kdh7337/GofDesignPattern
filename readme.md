@@ -184,9 +184,9 @@ Template Method와 호환성이 좋다.
 
 ```java
 class Singleton{
-    private Singleton uniqueInstance = new Singleton();
+    private static Singleton uniqueInstance = new Singleton();
     private Singleton(){}
-    public Singleton getInstance(){
+    public static Singleton getInstance(){
         return uniqueInstance;
     }
 }
