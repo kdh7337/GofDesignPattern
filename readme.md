@@ -4,6 +4,7 @@
 # list:
 
  * Iterator
+ * Adapter
  * Proxy
  * Template 
 
@@ -38,6 +39,39 @@ While(iterator.hasNext()){
 * 루프와 같은 역할 수행
 * Boolean hasNext() 다음 항이 있는지
 * Object next(); 다음 항 반환 
+
+##
+
+## Adapter 패턴
+
+### 서로 다른(차이점) 두 가지 요소를 연결
+
+‘개조자, 어댑터’
+
+두 요소간 ‘차이점’을 해소하는 디자인 패턴, 감싸 사용한다는 면에서 Wrapper이기도 하다
+
+#### 왜?: 이미 만들어진 클래스 또는 요소를 다른 환경에서 사용할 때 해당 요소를 적합한 요소로 다시 만들지 않고 바로 활용할 수 있게 만들 수 있다.
+
+기존의 요소를 현재 필요한 요소로 바꾸기 (220v -> 110v)
+
+#### Class Adapter 
+* 사용할 요소와, 어댑터를 모두 구현한 클래스를 만들어 사용한다
+```java
+class Adapted extends Adaptee implements Adapter{
+//구현
+}
+```
+####Instance Adapter
+* 사용할 요소를 어댑터 내에 인스턴스로 넣어 사용한다.
+```java
+class Adapted implements Adapter{
+	Adaptee adaptee = new Adaptee();
+//구현 
+}
+```
+기존의 것을 직접 수정하지 않고 활용한다.
+
+버전 간의 호환성.
 
 ##
 
@@ -97,3 +131,4 @@ Operator.doMainJob(param2)’
 #### Concrete 클래스: 구현체 
 
 * 추상 메소드가 구현된 클래스
+ 
