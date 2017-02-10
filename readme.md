@@ -11,6 +11,8 @@
  * [Singleton](http://github.com/kdh7337/GofDesignPattern#singleton)
  * [Strategy](http://github.com/kdh7337/GofDesignPattern#strategy)
  * [Facade](http://github.com/kdh7337/GofDesignPattern#facade)
+ * [Observer]()
+ * [Mediator](https://github.com/kdh7337/GofDesignPattern#mediator)
  
 
 ##
@@ -26,11 +28,11 @@
 
 #### 왜? : 구현과 분리한 사용을 위해
 
-```java	
+````java	
 While(iterator.hasNext()){
 		iterator.next(); 
 }
-```
+````
 
 인터페이스이기 때문에 내부에 구현되는 집합의 자료형이 바뀌어도 다른 소스코드를 변경할 필요가 없다.
 
@@ -61,19 +63,19 @@ While(iterator.hasNext()){
 
 #### Class Adapter 
 * 사용할 요소와, 어댑터를 모두 구현한 클래스를 만들어 사용한다
-```java
+````java
 class Adapted extends Adaptee implements Adapter{
 //구현
 }
-```
+````
 ####Instance Adapter
 * 사용할 요소를 어댑터 내에 인스턴스로 넣어 사용한다.
-```java
+````java
 class Adapted implements Adapter{
 	Adaptee adaptee = new Adaptee();
 //구현 
 }
-```
+````
 기존의 것을 직접 수정하지 않고 활용한다.
 
 버전 간의 호환성.
@@ -94,7 +96,7 @@ class Adapted implements Adapter{
 본 객체가 처리해야하는 업무에 해당하는 메소드는 대리 객체가 본 객체의 해당 메소드를 호출하는 방법을 사용한다.  
 
 #### 왜?: 대리인이 수행할 만한 일과 본 객체가 수행해야 할 일을 분할 관리하면서 동시에, 대리인이 수행해야할 일이 없는 경우 본 객체로 쉽게 사용 전환 할 수 있다.
-```java
+````java
 //대리인을 통한 구현 
 Operator opertator = new OperatorProxy();
 operator.doMinorJob(param1);
@@ -105,7 +107,7 @@ operator.doMainJob(param2);
 Operator operator = new OperatorClient();
 Operator.doMinorJob(param1);
 Operator.doMainJob(param2)’
-```
+````
 
 생성자만 변화하여 proxy기능의 사용여부를 조절할 수 있다.
 
@@ -152,7 +154,7 @@ Operator.doMainJob(param2)’
 
 기본적인 생성자를 통한 인스턴스 생성은 특정 클래스에 한정되어 구현될 수 밖에 없다. 팩토리 메소드는 이로부터 자율성을 만들어 낼 수 있다. 
 
-```java
+````java
 abstract class Factory{
 	public final Product newProduct(Object param){
         Product product = createProduct(param);
@@ -162,7 +164,7 @@ abstract class Factory{
     protected abstract Product createProduct(Object Param);
     protected abstract void processing();
 }
-``` 
+```` 
 
 #### Factory 추상 클래스
 
@@ -186,7 +188,7 @@ Template Method와 호환성이 좋다.
 
 ####왜?: 여러 개의 인스턴스가 만들어지는 것을 확실하게 방지해서 사용해야 할 때, 예를 들면 시스템 리소스를 사용하는 객체, 이러한 객체가 많을 경우 시스템에 부담을 줄 수있다.
 
-```java
+````java
 class Singleton{
     private static Singleton uniqueInstance = new Singleton();
     private Singleton(){}
@@ -194,7 +196,7 @@ class Singleton{
         return uniqueInstance;
     }
 }
-```
+````
 #### Singleton 클래스
 * 프라이빗 생성자
 * 유일한 스태틱 인스턴스 
@@ -213,12 +215,12 @@ class Singleton{
 문제 해결을 위해 고안된 알고리즘을 정해진 패턴에 따라 교체해서 쉽게 문제 해결한다.
   
 #### 왜?: 내부 문제 해결 알고리즘과 프로그램의 구조를 분리시켜 유연한 문제해결을 가능하게 하기 위해서 
-```java
+````java
 Interface Strategy {
     void sovleProblem();
   	void saveResult();
 } 
-```
+````
 #### Strategy 인터페이스
 * 미리 정해진 전략 사용 메소드
 
@@ -240,7 +242,7 @@ Interface Strategy {
 복잡하게 얽혀 있는 구조와 사용법을 단순한 인터페이스로 표현한다.
 
 #### 왜?: 프로그램의 규모가 커지면서 다양한 객체들이 복잡한 상호작용을 갖게 된다. 이러한 복잡한 연계과정을 단순한 메소드로 표현하여 사용성을 높일 수 있다.
-```java
+````java
 public class Façade{
 	private ComponentA componentA = new ComponentA();
 	private ComponentB componentB = new ComponentB();
@@ -249,7 +251,7 @@ public class Façade{
 //요소들의 상호작용을 구현한다.
 }
 }
-```
+````
 #### Façade 클래스
 * 복잡한 객체 간의 상호작용을 간단한 메서드로 표현
 
@@ -266,7 +268,7 @@ Façade들로 새 Façade를 구현하는 것도 좋은 방법이 될 수 있다
 관찰보다는 전달
 #### 왜?: 관찰 대상을 자유롭게 변화시킬 수 있다. 관찰 대상의 변화에 즉각적인 대응이 가능하도록 할 수 있다.
   
-  ```java
+  ````java
   abstract class Observable {
     private Observer[] observers = new Observer[number];
     public void attachObserver(Observer observer){
@@ -283,7 +285,7 @@ Façade들로 새 Façade를 구현하는 것도 좋은 방법이 될 수 있다
             }
         }
   }
-  ```
+  ````
 
 어떠한 변화가 생겨나면 관찰자에게 관찰 대상의 참조를 전달한다. 
 
@@ -296,3 +298,16 @@ Façade들로 새 Façade를 구현하는 것도 좋은 방법이 될 수 있다
 
 관찰 대상 자체를 ‘this’로 넘겨 관찰 대상에 어떠한 영향력을 행사할 수도 있다.
 
+##
+
+## Mediator
+
+### 개별적인 통신 대신 중개자를 통해서 간접적으로 통신한다
+
+'중개자'
+
+#### 왜?: 객체 간의 통신은 설계가 특정 객체에 얽매이게 한며 많은 수의 객체는 만들어 질 수 있는 통신경로의 수를 증가시킨다. 이를 중개자를 만드는 것을 통해 해결할 수 있다. 
+
+````java
+
+````
