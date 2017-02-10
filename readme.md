@@ -228,3 +228,31 @@ Interface Strategy {
 하나의 문제를 풀기 위해 다양한 전략을 구현할 수 있지만 하나의 일관된 구조 속에서 동작할 수 있다. 
 
 하나의 플레이어가 다양한 전략을 가지고 상황에 따른 유연한 대처가 가능하게 할 수 있다. 
+
+##
+
+## Façade
+
+### 복잡한 과정을 간단하게
+
+‘창구, 정면’
+
+복잡하게 얽혀 있는 구조와 사용법을 단순한 인터페이스로 표현한다.
+
+#### 왜?: 프로그램의 규모가 커지면서 다양한 객체들이 복잡한 상호작용을 갖게 된다. 이러한 복잡한 연계과정을 단순한 메소드로 표현하여 사용성을 높일 수 있다.
+```java
+public class Façade{
+	private ComponentA componentA = new ComponentA();
+	private ComponentB componentB = new ComponentB();
+	//그외 여러 요소들
+	public void doComplexSimply(){
+//요소들의 상호작용을 구현한다.
+}
+}
+```
+#### Façade 클래스
+* 복잡한 객체 간의 상호작용을 간단한 메서드로 표현
+
+인터페이스(메소드) 수를 줄이는데 핵심이 있다. 
+
+Façade들로 새 Façade를 구현하는 것도 좋은 방법이 될 수 있다.
