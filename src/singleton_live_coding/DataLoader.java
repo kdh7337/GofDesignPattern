@@ -1,4 +1,4 @@
-package singleton;
+package singleton_live_coding;
 
 import java.util.ArrayList;
 
