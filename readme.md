@@ -8,6 +8,9 @@
  * Proxy
  * Template Method 
  * Factory Method
+ * SingleTon
+ * Strategy
+ 
 
 ##
 
