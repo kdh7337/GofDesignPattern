@@ -3,16 +3,18 @@
 
 # list:
 
- * [Iterator](http://github.com/kdh7337/GofDesignPattern#iterator)
- * [Adapter](http://github.com/kdh7337/GofDesignPattern#adapter)
- * [Proxy](http://github.com/kdh7337/GofDesignPattern#proxy)
- * [Template Method](http://github.com/kdh7337/GofDesignPattern#template-Method)
- * [Factory Method](http://github.com/kdh7337/GofDesignPattern#factory-Method)
- * [Singleton](http://github.com/kdh7337/GofDesignPattern#singleton)
- * [Strategy](http://github.com/kdh7337/GofDesignPattern#strategy)
- * [Facade](http://github.com/kdh7337/GofDesignPattern#facade)
- * [Observer]()
- * [Mediator](https://github.com/kdh7337/GofDesignPattern#mediator)
+ * [Iterator]
+ * [Adapter]
+ * [Proxy]
+ * [Template Method]
+ * [Factory Method]
+ * [Prototype]
+ * [Builder]
+ * [Singleton]
+ * [Strategy]
+ * [Facade]
+ * [Observer]
+ * [Mediator]
  
 
 ##
@@ -176,6 +178,86 @@ abstract class Factory{
 
 Template Method와 호환성이 좋다.
 
+##
+
+## Prototype
+
+### 인스턴스로 인스턴스 만들기
+
+'원형'
+
+원형이 되는 인스턴스를 기초로 새로운 인스턴스를 만듬
+
+#### 왜?: 같은 클래스지만 다른 종류의 인스턴스들을 너무 많이 만들거나, 클래스로부터 인스턴스를 만들기 어려운 경우, 그리고 생성할 인스턴스를 특정 클래스와 연결짖고 싶지 않을 경우  사용한다
+
+#### Product 인터페이스
+ 
+* 복제 매소드 (자바의 경우 java.lang.Cloneable을 상속해 복제 가능한 객체임을 알린다.)
+
+````java
+interface Product extends java.lang.Cloneable{
+    void use();
+    Product createClone();
+}
+````
+#### ProductUser 클래스
+
+* 추상 클래스 또는 인터페이스 객체로 추상적인 객체 생성을 구현할 수 있다.
+
+```java
+class ProductUser{
+    private HashMap<String,Product> prototypes = new HashMap<>();
+    public registerProto(String tag, Product product){
+        prototypes.put(tag,product);
+    }
+    public Product getProduct(String tag){
+        return prototypes.get(tag).createClone();
+    }
+}
+```
+
+자바의 clone()메소드는 Object가 가지고 있는 메소드이지만, Cloneable을 상속도 구현도 하지 않을 경우 예외가 발생한다. 
+clone()은 피상적인 복사(shallow copy) 이기 때문에 배열의 경우 내부의 모든 자료까지 복사되지 않고 주소값만 복사된다. 만약 내부 자료까지 모두 복사하길 원하면 별도의 구현이 필요하다.
+
+##
+
+## Builder
+
+### 순서에 따라 만들어가기
+
+'조립'
+
+복잡한 객체를 어떠한 단계에 따라 만들어가도록 한다. 
+
+#### 왜?: 형성 과정에 있어서 다양성이 존재하고, 따라야 하는 순서와 구조가 있을 경우  
+
+#### Builder 인터페이스, 추상 클래스  
+
+* 어떠한 객체 또는 자료를 생성하는 방식, 메소드 
+````java
+interface Builder<T>{
+    void setTitle(String s);
+    void setContent(String c);
+    void setPS(String p);
+    T create();
+}
+````
+#### Director 객체
+* 빌더를 가지고 객체를 만드는 메소드
+````java
+class Director{
+    Builder builder;
+    public <T> T build(Builder<? extends T > builder,String title, String content, String ps){
+        if(this.builder != builder){
+            this.builder = builder;
+        }
+        builder.setTitle(title);
+        builder.setContent(content);
+        builder.setPS(ps);
+    return builder.create();
+    }
+}
+````
 ##
 
 ## Singleton
