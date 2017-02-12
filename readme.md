@@ -258,6 +258,94 @@ class Director{
     }
 }
 ````
+
+##
+
+## Abstract Factory
+
+### 추상적인 구성요소 생성, 조합
+
+'추상 부품 공장'
+
+인터페이스, 추상 클래스로 된 구성요소를 만들고 이를 통해 조합을 해 다양한 객체를 만들 수 있다.
+
+#### 왜?: 유사하지만 차이점이 있으며 상호 부품으로서 역할을 하는 객체를 하나의 팩토리를 통해 생성하고 조합할 수 있는 환경울 제공한다. 이때 추상적인 구성요소로 구성하여 유지보수성을 높인다. 
+
+#### Component 인터페이스, 추상 클래스
+* 공통적인 요소
+````java
+abstract class Component{
+    String tag;
+   public Component(String tag){
+       this.tag = tag;
+   }
+   public void commonWorking;
+}
+
+abstract class ComponentA extends Component{
+    String url,tag;
+    publicComponentA(Strung url, String tag){
+        super(tag);
+        this.url = url;
+    }
+    public void A_specificWork(){
+        //A의 만의 요소
+    }
+}
+abstract class ComponentB extends Component{
+   String url,tag;
+       publicComponentA(Strung url, String tag){
+           super(tag);
+           this.url = url;
+       }
+    public void B_specificWork(){
+        //B의 만의 요소
+    }
+}
+abstract class ComponentC extends Component{
+   String url,tag;
+       publicComponentA(Strung url, String tag){
+           super(tag);
+           this.url = url;
+       }
+    public void B_specificWork(){
+        //B의 만의 요소
+    }
+}
+````
+#### Factory 인터페이스, 추상 클래스 
+* 각각의 추상 객체를 만드는 메소드
+````java
+public abstract class Factory{
+    private Factory factory = new Factory();
+    private Factory(){}
+    
+    public Factory getInstance(){
+        return factory;
+    }
+    /*
+    * public Factory getInstance(String className){
+    *   Factory factory = null;
+    *   try{
+    *       factory = (Factory) Class.forName(className).newInstacne();
+    *   }catch(Exception e){
+    *   System.err.println("해당 클래스의 인스턴스를 만들 수 없습니다.")
+    *   }
+    *   return factory;
+    * }
+    */
+    abstract ComponentA createComponentA();
+    abstract ComponentB createComponentB();
+    abstract ComponentC createComponentC();
+    
+}
+````
+Factory Method와는 직접적인 관계가 없다. Abstract Factory 가 객체를 만드는 과정이 Factory Method가 될 수 있다. 
+
+추상적이기에 구체적인 팩토리 내부의 수정은 전체 구조에 영향을 주지 않고 간편하게 수정, 내용 추가를 할 수 있다.
+
+부품을 추가하는 것은 까다로운 편이다.
+
 ##
 
 ## Singleton
